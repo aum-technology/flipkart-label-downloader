@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set API Keys</title>
+</head>
+
+<body>
+    <div
+        style="display: flex;flex-direction: column; justify-content: center; align-items: center;width: 100%; top: 45%;height: 100vh;width: 100vw;">
+        <div style="display: flex;justify-content: left; align-items: left; flex-direction: column; gap: 10px;">
+            <div>
+                <input type="password" id="application-id" name="application-id" placeholder="Application ID">
+            </div>
+            <div>
+                <input type="password" id="application-secret" name="application-secret"
+                    placeholder="Application Secret">
+            </div>
+            <div>
+                <button id="btn-set-api-keys" name="btn-set-api-keys" style="width: 100%;">Save Credentials</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/apikeys.js"></script>
+</body>
+
+</html>

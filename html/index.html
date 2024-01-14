@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Flipkart Label Downloader</title>
+	<link rel="stylesheet" href="../lib/bootstrap-4.1.3.min.css">
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+	<div>
+		<button name="set-api-keys" id="set-api-keys" type="button" class="btn btn-primary w-auto m-2 mr-4">Set API Keys</button>
+		<span class="mr-4"><a href="mailto:contact.aumtechnolabs@gmail.com">contact.aumtechnolabs@gmail.com</a></span>
+		<span><b>@Author : <a href="https://aum.technology" style="color: orange;padding-bottom: 3px; border-bottom: 2px solid orange;" target="_blank">Aum Technology</a></b></span>
+	</div>
+	<div id="main" class="main">
+		<form class="download-form" id="download-form">
+			<div class="form-group row">
+				<label class="col-3">Ignore Date ?</label>
+				<div class="col-4">
+					<div class="custom-control custom-radio custom-control-inline w-auto">
+						<input name="ignore-date" id="ignore-date_0" type="radio" class="custom-control-input w-auto"
+							value="yes" required="required">
+						<label for="ignore-date_0" class="custom-control-label">Yes</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline w-auto">
+						<input name="ignore-date" id="ignore-date_1" type="radio" class="custom-control-input w-auto"
+							value="no" required="required" checked="checked">
+						<label for="ignore-date_1" class="custom-control-label">No</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="from-date" class="col-3 col-form-label">Dispatch By From Date</label>
+				<div class="col-4">
+					<input id="from-date" name="from-date" placeholder="From Date" type="date" required="required"
+						class="form-control w-auto">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="to-date" class="col-3 col-form-label">Dispatch By To Date</label>
+				<div class="col-4">
+					<input id="to-date" name="to-date" placeholder="To Date" type="date" required="required"
+						class="form-control w-auto">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-3">Shipment States</label>
+				<div class="col-4">
+					<div class="custom-control custom-checkbox custom-control-inline w-auto">
+						<input name="shipment-states" id="shipment-states_1" type="checkbox"
+							class="custom-control-input" value="PACKED" checked="checked">
+						<label for="shipment-states_1" class="custom-control-label">PENDING RTD</label>
+					</div>
+					<div class="custom-control custom-checkbox custom-control-inline w-auto">
+						<input name="shipment-states" id="shipment-states_2" type="checkbox"
+							class="custom-control-input w-auto" value="READY_TO_DISPATCH">
+						<label for="shipment-states_2" class="custom-control-label">PENDING HANDOVER</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-3">Download Mode</label>
+				<div class="col-4">
+					<div class="custom-control custom-radio custom-control-inline w-auto">
+						<input name="download-mode" id="download-mode_0" type="radio"
+							class="custom-control-input w-auto" value="single-multi-merged" checked="checked"
+							required="required">
+						<label for="download-mode_0" class="custom-control-label">Single - Multi Merged</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline w-auto">
+						<input name="download-mode" id="download-mode_1" type="radio"
+							class="custom-control-input w-auto" value="single-multi-separated" required="required">
+						<label for="download-mode_1" class="custom-control-label">Single - Multi Separated</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline w-auto">
+						<input name="download-mode" id="download-mode_2" type="radio"
+							class="custom-control-input w-auto" value="single-only" required="required">
+						<label for="download-mode_2" class="custom-control-label">Single Only</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline w-auto">
+						<input name="download-mode" id="download-mode_3" type="radio" required="required"
+							class="custom-control-input w-auto" value="multi-only">
+						<label for="download-mode_3" class="custom-control-label">Multi Only</label>
+					</div>
+				</div>
+			</div>
+			<div>
+				<br>
+				<div>----------------------PDF Page Crop Setting----------------------------</div>
+				<div>
+					<div class="form-group row">
+						<label class="col-3">Enable Cropping</label>
+						<div class="col-4">
+							<div class="custom-control custom-radio custom-control-inline w-auto">
+								<input name="enable-cropping" id="enable-cropping_0" type="radio"
+									class="custom-control-input w-auto" value="yes" checked="checked"
+									required="required">
+								<label for="enable-cropping_0" class="custom-control-label">Yes</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline w-auto">
+								<input name="enable-cropping" id="enable-cropping_1" type="radio"
+									class="custom-control-input w-auto" value="no" required="required">
+								<label for="enable-cropping_1" class="custom-control-label">No</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="top-margin" class="col-3 col-form-label">Top Margin</label>
+						<div class="col-8">
+							<input id="top-margin" name="top-margin" placeholder="in px" type="number"
+								class="form-control w-auto" value="20">
+						</div>
+						<label for="bottom-margin" class="col-3 col-form-label">Bottom Margin</label>
+						<div class="col-8">
+							<input id="bottom-margin" name="bottom-margin" placeholder="in px" type="number"
+								class="form-control w-auto" value="450">
+						</div>
+						<label for="left-margin" class="col-3 col-form-label">Left Margin</label>
+						<div class="col-8">
+							<input id="left-margin" name="left-margin" placeholder="in px" type="number"
+								class="form-control w-auto" value="175">
+						</div>
+						<label for="right-margin" class="col-3 col-form-label">Right Margin</label>
+						<div class="col-8">
+							<input id="right-margin" name="right-margin" placeholder="in px" type="number"
+								class="form-control w-auto" value="175">
+						</div>
+					</div>
+				</div>
+				<div>----------------------------------------------------------------------------------</div>
+			</div>
+			<div class="form-group row"></div>
+			<div class="form-group row">
+				<div class="offset-4 col-4">
+					<button name="submit" type="submit" class="btn btn-primary w-auto">Download</button>
+				</div>
+			</div>
+		</form>
+		<div class="token-log"></div>
+		<div class="gathering-shipments-log"></div>
+		<div class="pdf-request-log"></div>
+		<div class="pdf-merging-log"></div>
+		<div class="general-log"></div>
+	</div>
+	<script src="../js/helper.js"></script>
+	<script src="../js/requests.js"></script>
+	<script src="../lib/pdf-lib.js"></script>
+	<script src="../js/processor.js"></script>
+	<script src="../js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+html{
+    overflow: auto;
+}
+body{
+    overflow: hidden;
+}
+.main
+{
+    width: max-content;
+    height: max-content;
+    padding: 20px;
+}

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Flipkart Label Downloader",
+  "version": "1.3",
+  "description": "Download Flipkart Labels sorted by SKU & multi item shipment at the end of output pdf. Proudly developed by https://aum.technology",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Flipkart Label Downloader"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.flipkart.net/*"],
+  "icons": {
+    "128": "icon.png"
+  }
+}
