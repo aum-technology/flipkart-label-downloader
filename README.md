@@ -1,3 +1,6 @@
+Link To Chrome Extension Store
+https://chromewebstore.google.com/detail/flipkart-label-downloader/aaflablfikklgpbjfhocibnonplpjbhd
+
 This Chrome Extension downloads Flipkart Labels sorted by SKU & multi item shipment at the end of output pdf. Proudly developed by https://aum.technology
 
 Flipkart Label Downloader Extension is intended for flipkart sellers.
