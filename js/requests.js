@@ -1,24 +1,24 @@
-async function getBearerToken(params) {
-    var appID = params.appID;
-    var appSecret = params.appSecret;
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic " + btoa(appID + ":" + appSecret));
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        credentials: 'omit'
-    };
-    return fetch("https://seller.api.flipkart.net/oauth-service/oauth/token?grant_type=client_credentials&scope=Seller_Api", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            if (typeof result == "object" && result.error == undefined) {
-                return result.access_token;
-            } else {
-                return false;
-            }
-        })
-        .catch(error => { console.log(error); return false; });
-}
+// async function getBearerToken(params) {
+//     var appID = params.appID;
+//     var appSecret = params.appSecret;
+//     var myHeaders = new Headers();
+//     myHeaders.append("Authorization", "Basic " + btoa(appID + ":" + appSecret));
+//     var requestOptions = {
+//         method: 'GET',
+//         headers: myHeaders,
+//         credentials: 'omit'
+//     };
+//     return fetch("https://seller.api.flipkart.net/oauth-service/oauth/token?grant_type=client_credentials&scope=Seller_Api", requestOptions)
+//         .then(response => response.json())
+//         .then(result => {
+//             if (typeof result == "object" && result.error == undefined) {
+//                 return result.access_token;
+//             } else {
+//                 return false;
+//             }
+//         })
+//         .catch(error => { console.log(error); return false; });
+// }
 async function getShipments(params) {
     var requestOptions = {
         method: 'POST',

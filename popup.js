@@ -1,7 +1,2 @@
-chrome.windows.create({
-    url: "html/index.html",
-    type: "panel",
-    // width: 800,
-    // height: 800
-});
+window.open('html/index.html');
 window.close();

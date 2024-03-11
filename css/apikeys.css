@@ -1,0 +1,71 @@
+.section-apikeys,
+.self-access-apikeys,
+.third-party-apikeys,
+.steps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-header {
+    font-size: 30px;
+}
+
+.section-apikeys {
+    gap: 100px;
+}
+
+.self-access-apikeys,
+.third-party-apikeys {
+    gap: 20px;
+}
+
+.steps {
+    width: 800px;
+    gap: 10px;
+}
+
+.steps div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.steps input {
+    width: 250px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.steps button {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid transparent;
+    background-color: darkgreen;
+    color: yellow;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.steps button:active {
+    border-color: green;
+    background-color: white;
+    color: darkgreen;
+}
+
+.steps button#disable_third_party {
+    background-color: darkred;
+    color: white;
+}
+
+.steps button#disable_third_party:active {
+    color: darkred;
+    background: white;
+    border-color: red;
+}

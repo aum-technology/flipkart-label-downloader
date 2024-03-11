@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         process();
     }
     document.getElementById('set-api-keys').onclick = function () {
-        chrome.windows.create({
-            url: "html/apikeys.html",
-            type: "panel"
-        });
+        window.open('../html/apikeys.html');
     }
 });

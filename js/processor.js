@@ -1,24 +1,30 @@
 async function process() {
 
     try {
-        chrome.storage.sync.get(['application-id', 'application-secret'], async function (items) {
+        chrome.storage.sync.get(['application-id', 'application-secret', 'current_api_method'], async function (items) {
             resetLoggers();
-            if (!(items['application-id'] && items['application-secret'])) {
+            if ((items['current_api_method'] ?? "self-access") == "self-access" && !(items['application-id'] && items['application-secret'])) {
                 alert("Flipkart Token Not Set!!!");
-                chrome.windows.create({
-                    url: "html/apikeys.html",
-                    type: "panel",
-                });
+                window.open("../html/apikeys.html");
                 return;
             }
             document.querySelector('.token-log').innerHTML = "Fetching Flipkart Token.....";
-            access_token = await getBearerToken({ appID: items['application-id'], appSecret: items['application-secret'] });
+            access_token = await getAccessToken({ appID: items['application-id'], appSecret: items['application-secret'] }).catch(error => {
+                alert(error);
+                document.querySelector('.token-log').innerHTML = document.querySelector('.token-log').innerHTML + "<br>" + error;
+                return false;
+            });
             if (access_token == false) {
                 document.querySelector('.token-log').innerHTML = document.querySelector('.token-log').innerHTML + "<br> Error while fetching token. Please check credentials and try again.";
                 return;
             }
             document.querySelector('.gathering-shipments-log').innerHTML = "Fetching Shipments List As Per Filters!";
-            let shipmentIds = await getShipmentIds();
+            let shipmentIds = await getShipmentIds().catch(error => {
+                document.querySelector('.gathering-shipments-log').innerHTML = document.querySelector('.gathering-shipments-log').innerHTML + "<br>Error While Fetching Shipments!! " + error;
+            });
+            if (shipmentIds == false) {
+                return;
+            }
             let downloadingType = document.querySelector('[name=download-mode]:checked') ? document.querySelector('[name=download-mode]:checked').value : null;
             switch (downloadingType) {
                 case 'single-multi-merged':
