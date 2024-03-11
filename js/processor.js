@@ -4,7 +4,7 @@ async function process() {
         chrome.storage.sync.get(['application-id', 'application-secret', 'current_api_method'], async function (items) {
             resetLoggers();
             if ((items['current_api_method'] ?? "self-access") == "self-access" && !(items['application-id'] && items['application-secret'])) {
-                alert("Flipkart Token Not Set!!!");
+                alert("API Credentials Not Set! Please Set It First!");
                 window.open("../html/apikeys.html");
                 return;
             }
