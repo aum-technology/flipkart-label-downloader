@@ -34,12 +34,26 @@ async function getShipments(params) {
         cache: 'no-cache'
     };
     return fetch("https://api.flipkart.net/sellers/v3/shipments/filter", requestOptions)
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                if (response.status == 500) {
+                    return { "resend": true };
+                } else {
+                    return response.json();
+                }
+            }
+        })
         .then(result => {
-            if (typeof result == "object" && result.error == undefined && result.shipments.length) {
+            if (typeof result == "object" && result.error == undefined && result.shipments && result.shipments.length) {
                 return result;
             } else {
-                return [];
+                if (result.resend == true) {
+                    return getShipments(params);
+                } else {
+                    return [];
+                }
             }
         })
         .catch(error => { console.log(error); return []; });
@@ -57,12 +71,26 @@ async function getNextShipments(params) {
         cache: 'no-cache'
     };
     return fetch("https://api.flipkart.net/sellers" + params.nextPageUrl, requestOptions)
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                if (response.status == 500) {
+                    return { "resend": true };
+                } else {
+                    return response.json();
+                }
+            }
+        })
         .then(result => {
-            if (typeof result == "object" && result.error == undefined && result.shipments.length) {
+            if (typeof result == "object" && result.error == undefined && result.shipments && result.shipments.length) {
                 return result;
             } else {
-                return [];
+                if (result.resend == true) {
+                    return getNextShipments(params);
+                } else {
+                    return [];
+                }
             }
         })
         .catch(error => { console.log(error); return []; });
@@ -147,11 +175,25 @@ async function getPdf(params) {
         cache: "no-cache"
     };
     return fetch("https://api.flipkart.net/sellers/v3/shipments/" + params.ids.toString() + "/labels", requestOptions)
-        .then(r => r.arrayBuffer())
-        .then(r => {
-            return r;
+        .then(response => {
+            if (response.ok) {
+                return response.arrayBuffer();
+            } else {
+                if (response.status == 500) {
+                    return { "resend": true };
+                } else {
+                    return new ArrayBuffer();
+                }
+            }
         })
-        .catch(e => { console.log('error', e); return new ArrayBuffer });
+        .then(result => {
+            if (result.resend == true) {
+                return getPdf(params);
+            } else {
+                return result;
+            }
+        })
+        .catch(e => { console.log('error', e); return new ArrayBuffer() });
 }
 function downloadToBrowser(file, filename, type) {
     const link = document.createElement('a');

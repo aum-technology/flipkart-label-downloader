@@ -28,7 +28,7 @@ document.querySelector("#get_token").onclick = () => {
     }
     fetch(`https://fld.aum.technology/get-token-data-for-flipkart-label-downloader.php?state=${clientCode}&client_id=${applicationId}`).then(r => r.json())
         .then((r) => {
-            if (!r.hasOwnProperty('error')) {
+            if (r && Object.keys(r).length && !r.hasOwnProperty('error')) {
                 r.client_code = clientCode;
                 r.application_id = applicationId;
                 chrome.storage.sync.set({ third_party_token_data: r });
@@ -36,7 +36,7 @@ document.querySelector("#get_token").onclick = () => {
                 chrome.storage.sync.set({ current_api_method: 'third-party' });
                 window.close();
             } else {
-                alert("Error While Saving Token Data!! Message : " + r.error_description);
+                alert("Error While Saving Token Data!! Make Sure You Have Granted Access. Server Message : " + (r.error_description ?? "Authorization Pending!"));
             }
         }).catch(e => {
             alert(e);
