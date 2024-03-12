@@ -7,7 +7,7 @@
     "default_popup": "popup.html",
     "default_title": "Flipkart Label Downloader"
   },
-  "permissions": ["storage","tabs"],
+  "permissions": ["storage"],
   "host_permissions": ["*://*.flipkart.net/*","*://*.aum.technology/*"],
   "icons": {
     "128": "icon.png"
